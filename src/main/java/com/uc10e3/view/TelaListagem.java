@@ -30,20 +30,20 @@ public class TelaListagem extends javax.swing.JFrame {
     }
 
     public TelaListagem(Usuario usuario) {
-    initComponents();
-    this.usuarioLogado = usuario;
+        initComponents();
+        this.usuarioLogado = usuario;
 
-        // Configurações de posicionamento ANTES de tornar visível
-        setLocationRelativeTo(null); // Centraliza na tela
+        setLocationRelativeTo(null);
 
-        if (usuario.getTipo().equals("Usuário")) {
-            btnCadastrar.setEnabled(false);
-        } else {
-            btnCadastrar.setEnabled(true);
-        }
+        // Habilita botões conforme permissão
+        boolean isAdmin = usuario.getTipo().equals("Administrador");
+        boolean isUsuarioComum = usuario.getTipo().equals("Usuário");
+
+        btnCadastrar.setEnabled(!isUsuarioComum); // Operador e Admin podem cadastrar
+        btnExcluir.setEnabled(isAdmin); // Somente Admin pode excluir
 
         carregarPodcasts();  // Carrega os podcasts ao abrir a tela
-}
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,6 +61,7 @@ public class TelaListagem extends javax.swing.JFrame {
         tblListagem = new javax.swing.JTable();
         btnCadastrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +116,14 @@ public class TelaListagem extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel3.setText("LISTAGEM");
 
+        btnExcluir.setBackground(new java.awt.Color(255, 153, 153));
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -140,6 +149,8 @@ public class TelaListagem extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnExcluir)
+                        .addGap(33, 33, 33)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -157,7 +168,9 @@ public class TelaListagem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluir))
                 .addGap(14, 14, 14))
         );
 
@@ -199,6 +212,55 @@ public class TelaListagem extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int selectedRow = tblListagem.getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(
+            this, 
+            "Selecione um podcast para excluir!", 
+            "Aviso", 
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    // Confirmação da exclusão
+    int confirm = JOptionPane.showConfirmDialog(
+        this, 
+        "Tem certeza que deseja excluir este podcast?", 
+        "Confirmação", 
+        JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == JOptionPane.YES_OPTION) {
+        try {
+            DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
+            Long id = (Long) model.getValueAt(selectedRow, 0); // ID deve ser do tipo Long
+            
+            PodcastController controller = new PodcastController();
+            controller.excluirPodcast(id);
+            
+            carregarPodcasts(); // Atualiza a tabela
+            JOptionPane.showMessageDialog(this, "Podcast excluído com sucesso!");
+        } catch (ClassCastException e) {
+            JOptionPane.showMessageDialog(
+                this, 
+                "Erro ao excluir podcast: ID deve ser do tipo Long.", 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
+            );
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(
+                this, 
+                "Erro ao excluir podcast: " + e.getMessage(), 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
+    }
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
        /**
      * Carrega todos os podcasts do banco de dados para a tabela.
      * 
@@ -207,37 +269,37 @@ public class TelaListagem extends javax.swing.JFrame {
      * @throws DatabaseException Se ocorrer um erro ao acessar o banco de dados.
      */
     private void carregarPodcasts() {
-    try {
-            PodcastController controller = new PodcastController();
-            List<Podcast> podcasts = controller.listarPodcasts();
+     try {
+        PodcastController controller = new PodcastController();
+        List<Podcast> podcasts = controller.listarPodcasts();
 
-            DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
-            model.setRowCount(0); 
+        DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
+        model.setRowCount(0); 
 
-            for (Podcast podcast : podcasts) {
-                model.addRow(new Object[]{
-                    podcast.getId(),
-                    podcast.getProdutor(),
-                    podcast.getNomeDoEpisodio(),
-                    podcast.getNumeroDoEpisodio(),
-                    podcast.getDuracao(),
-                    podcast.getUrlDoRepositorio()
-                });
-            }
-        } catch (Exception e) {
-            // Trate erros de carregamento (ex: log, mensagem ao usuário)
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(
-                this, 
-                "Erro ao carregar podcasts!", 
-                "Erro", 
-                JOptionPane.ERROR_MESSAGE
-            );
+        for (Podcast podcast : podcasts) {
+            model.addRow(new Object[]{
+                podcast.getId(), // Certifique-se de que getId() retorna Long
+                podcast.getProdutor(),
+                podcast.getNomeDoEpisodio(),
+                podcast.getNumeroDoEpisodio(),
+                podcast.getDuracao(),
+                podcast.getUrlDoRepositorio()
+            });
         }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(
+            this, 
+            "Erro ao carregar podcasts!", 
+            "Erro", 
+            JOptionPane.ERROR_MESSAGE
+        );
+    }
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

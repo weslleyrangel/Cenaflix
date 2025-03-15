@@ -2,6 +2,7 @@ package com.uc10e3.dao;
 
 import com.uc10e3.model.Podcast;
 import com.uc10e3.util.JPAUtil;
+import static com.uc10e3.util.JPAUtil.getEntityManager;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
@@ -39,7 +40,6 @@ public class PodcastDAO {
      * Busca todos os podcasts cadastrados.
      * 
      * @return Lista completa de podcasts ordenados por ID.
-     * @throws SQLException Se a consulta falhar.
      */
 public List<Podcast> listarTodos() {
     EntityManager em = JPAUtil.getEntityManager();
@@ -64,4 +64,17 @@ public List<Podcast> filtrarPorProdutor(String produtor) {
         em.close();
     }
 }
+    public void excluir(Long id) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Podcast podcast = em.find(Podcast.class, id);
+            if (podcast != null) {
+                em.remove(podcast);
+            }
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 }

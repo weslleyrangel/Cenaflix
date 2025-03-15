@@ -2,6 +2,8 @@ package com.uc10e3.controller;
 
 import com.uc10e3.dao.PodcastDAO;
 import com.uc10e3.model.Podcast;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Persistence;
 
 import java.util.List;
 
@@ -46,6 +48,14 @@ public class PodcastController {
             return podcastDAO.filtrarPorProdutor(produtor);
         } catch (Exception e) {
             throw new RuntimeException("Erro no controller ao filtrar podcasts: " + e.getMessage(), e);
+        }
+    }
+    
+    public void excluirPodcast(Long id) {
+        try {
+            podcastDAO.excluir(id); // Usa o DAO em vez de gerenciar o EntityManager
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao excluir podcast: " + e.getMessage(), e);
         }
     }
 }
