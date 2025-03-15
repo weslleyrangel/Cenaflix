@@ -2,11 +2,24 @@ package com.uc10e3.dao;
 
 import com.uc10e3.model.Podcast;
 import com.uc10e3.util.JPAUtil;
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
+
 import java.util.List;
 
+/**
+ * Camada de acesso a dados para operações relacionadas a podcasts.
+ * Realiza operações CRUD no banco de dados.
+ * 
+ * @author Wesll
+ * @version 1.1
+ * @since 2023-10-01
+ */
 public class PodcastDAO {
-
+     /**
+     * Salva um podcast no banco de dados.
+     * 
+     * @param podcast Objeto a ser persistido.
+     */
     public void salvar(Podcast podcast) {
     EntityManager em = JPAUtil.getEntityManager();
     try {
@@ -22,7 +35,12 @@ public class PodcastDAO {
         em.close();
     }
 }
-
+  /**
+     * Busca todos os podcasts cadastrados.
+     * 
+     * @return Lista completa de podcasts ordenados por ID.
+     * @throws SQLException Se a consulta falhar.
+     */
 public List<Podcast> listarTodos() {
     EntityManager em = JPAUtil.getEntityManager();
     try {

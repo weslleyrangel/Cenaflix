@@ -2,11 +2,22 @@ package com.uc10e3.dao;
 
 import com.uc10e3.model.Usuario;
 import com.uc10e3.util.JPAUtil;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 
+/**
+ * Representa um usuário do sistema CENAFLIX.
+ * @author Wesll
+ * @version 1.0
+ * @since 2023-10-01
+ */
 public class UsuarioDAO {
-
+    /**
+ * Autentica um usuário no sistema.
+ * @param login Login do usuário.
+ * @param senha Senha do usuário.
+ * @return Objeto Usuario autenticado ou null.
+ */
     public Usuario autenticar(String login, String senha) {
         EntityManager em = JPAUtil.getEntityManager();
         try {

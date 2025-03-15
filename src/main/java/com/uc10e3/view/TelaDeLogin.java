@@ -9,8 +9,12 @@ import com.uc10e3.model.Usuario;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author wesll
+ * Interface gráfica para autenticação de usuários no sistema.
+ * Valida credenciais e redireciona para a tela principal conforme o perfil.
+ * 
+ * @author Wesll
+ * @version 1.1
+ * @since 2023-10-01
  */
 public class TelaDeLogin extends javax.swing.JFrame {
     private UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -110,7 +114,12 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+       /**
+     * Valida as credenciais inseridas pelo usuário.
+     * 
+     * @param evt Evento de clique no botão "Login".
+     * @throws SecurityException Se ocorrer falha na autenticação.
+     */
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String login = txtLogin.getText();
         String senha = new String(txtSenha.getPassword());

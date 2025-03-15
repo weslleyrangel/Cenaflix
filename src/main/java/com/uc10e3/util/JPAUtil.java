@@ -1,9 +1,17 @@
 package com.uc10e3.util;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
+/**
+ * Gerencia a conexão com o banco de dados MySQL.
+ * Implementa o padrão Singleton para garantir uma única instância de conexão.
+ * 
+ * @author Wesll
+ * @version 1.2
+ * @since 2023-10-01
+ */
 public class JPAUtil {
 
     private static final String PERSISTENCE_UNIT = "cenaflix-pu";

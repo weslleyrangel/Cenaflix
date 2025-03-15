@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.uc10e3"},{"l":"com.uc10e3.controller"},{"l":"com.uc10e3.dao"},{"l":"com.uc10e3.model"},{"l":"com.uc10e3.util"},{"l":"com.uc10e3.view"}];updateSearchResults();

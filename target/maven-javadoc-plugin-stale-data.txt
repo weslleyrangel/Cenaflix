@@ -1,0 +1,65 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-classpath
+'C:/Users/wesll/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar;C:/Users/wesll/.m2/repository/org/hibernate/orm/hibernate-core/6.2.6.Final/hibernate-core-6.2.6.Final.jar;C:/Users/wesll/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar;C:/Users/wesll/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar;C:/Users/wesll/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21-win.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21-win.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21-win.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-swing/21/javafx-swing-21.jar;C:/Users/wesll/.m2/repository/org/openjfx/javafx-swing/21/javafx-swing-21-win.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/wesll/Downloads/cenaflix/src/main/java'
+-Xdoclint:none
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/wesll/Downloads/cenaflix/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'CENAFLIX 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'CENAFLIX 1.0-SNAPSHOT API'
+com.uc10e3.controller
+com.uc10e3.dao
+com.uc10e3
+com.uc10e3.model
+com.uc10e3.util
+com.uc10e3.view
+C:\Users\wesll\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar = 1741892762362
+C:\Users\wesll\.m2\repository\org\hibernate\orm\hibernate-core\6.2.6.Final\hibernate-core-6.2.6.Final.jar = 1742063335646
+C:\Users\wesll\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar = 1741892762268
+C:\Users\wesll\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar = 1741891615573
+C:\Users\wesll\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar = 1741891614869
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21.jar = 1742063335699
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-controls\21\javafx-controls-21-win.jar = 1742063335791
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21.jar = 1742063335715
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-graphics\21\javafx-graphics-21-win.jar = 1742063336557
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21.jar = 1742063335710
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-base\21\javafx-base-21-win.jar = 1742063335835
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-swing\21\javafx-swing-21.jar = 1742063335733
+C:\Users\wesll\.m2\repository\org\openjfx\javafx-swing\21\javafx-swing-21-win.jar = 1742063335771
+C:\Users\wesll\Downloads\cenaflix\src\main\java\cenaflixpodcast.sql = 1742009901801
+C:\Users\wesll\Downloads\cenaflix\src\main\java = 1742059914024
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allclasses-index.html = 1742065516069
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allpackages-index.html = 1742065516073
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\element-list = 1742065515375
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\help-doc.html = 1742065516176
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index-all.html = 1742065516122
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index.html = 1742065516029
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\member-search-index.js = 1742065516081
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\module-search-index.js = 1742065516076
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-summary.html = 1742065516129
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-tree.html = 1742065516019
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\package-search-index.js = 1742065516078
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\search.html = 1742065516126
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\serialized-form.html = 1742065515766
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\tag-search-index.js = 1742065516098
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\type-search-index.js = 1742065516079

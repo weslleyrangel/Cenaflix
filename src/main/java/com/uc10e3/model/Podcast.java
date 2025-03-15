@@ -1,11 +1,20 @@
 package com.uc10e3.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;  
 
 @Entity
+/**
+ * Representa um podcast no sistema CENAFLIX.
+ * Contém informações como identificador único, produtor, detalhes do episódio,
+ * duração e URL de acesso.
+ * 
+ * @author Wesll
+ * @version 1.1
+ * @since 2023-10-01
+ */
 public class Podcast {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +25,17 @@ public class Podcast {
     private String duracao;
     private String urlDoRepositorio;
 
-    // Construtor padrão necessário para JPA
     public Podcast() {}
 
+      /**
+     * Constrói um objeto Podcast com todos os atributos.
+     * 
+     * @param produtor Nome do produtor/responsável pelo episódio.
+     * @param nomeDoEpisodio Título do episódio.
+     * @param numeroDoEpisodio Número sequencial na série.
+     * @param duracao Duração no formato HH:MM.
+     * @param urlDoRepositorio Link para acesso ao conteúdo.
+     */
     public Podcast(String produtor, String nomeDoEpisodio, int numeroDoEpisodio, String duracao, String urlDoRepositorio) {
         this.produtor = produtor;
         this.nomeDoEpisodio = nomeDoEpisodio;
@@ -28,7 +45,11 @@ public class Podcast {
     }
 
     // Getters e Setters
-    // ...
+     /**
+     * Recupera o ID único do podcast no banco de dados.
+     * 
+     * @return ID numérico do podcast.
+     */
 
     public int getId() {
         return id;

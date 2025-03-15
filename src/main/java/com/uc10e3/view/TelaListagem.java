@@ -8,11 +8,17 @@ import com.uc10e3.controller.PodcastController;
 import com.uc10e3.model.Podcast;
 import com.uc10e3.model.Usuario;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author wesll
+ * Interface gráfica para listagem e filtragem de podcasts cadastrados no sistema.
+ * Exibe os podcasts em uma tabela e permite filtrar por produtor. Usuários administradores
+ * podem acessar a tela de cadastro diretamente desta interface.
+ * 
+ * @author Wesll
+ * @version 1.2
+ * @since 2023-10-01
  */
 public class TelaListagem extends javax.swing.JFrame {
     private Usuario usuarioLogado;
@@ -27,13 +33,16 @@ public class TelaListagem extends javax.swing.JFrame {
     initComponents();
     this.usuarioLogado = usuario;
 
-    if (usuario.getTipo().equals("Usuário")) {
-        btnCadastrar.setEnabled(false);
-    } else {
-        btnCadastrar.setEnabled(true);
-    }
+        // Configurações de posicionamento ANTES de tornar visível
+        setLocationRelativeTo(null); // Centraliza na tela
 
-    carregarPodcasts(); // Carrega os podcasts ao abrir a tela
+        if (usuario.getTipo().equals("Usuário")) {
+            btnCadastrar.setEnabled(false);
+        } else {
+            btnCadastrar.setEnabled(true);
+        }
+
+        carregarPodcasts();  // Carrega os podcasts ao abrir a tela
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -165,57 +174,66 @@ public class TelaListagem extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ /**
+     * Filtra os podcasts na tabela pelo nome do produtor.
+     * 
+     * A filtragem é feita em tempo real conforme o usuário digita.
+     * 
+     * @param evt Evento de digitação no campo de filtro.
+     */
     private void txtFiltrarListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarListagemActionPerformed
-        String filtro = txtFiltrarListagem.getText().toLowerCase();
-
-    PodcastController controller = new PodcastController();
-    List<Podcast> podcastsFiltrados = controller.filtrarPodcastsPorProdutor(filtro);
-
-    // Obtém o modelo da tabela
-    DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
-    model.setRowCount(0); // Limpa a tabela antes de adicionar novos dados
-
-    // Preenche a tabela com os dados filtrados
-    for (Podcast podcast : podcastsFiltrados) {
-        model.addRow(new Object[]{
-            podcast.getId(),
-            podcast.getProdutor(),
-            podcast.getNomeDoEpisodio(),
-            podcast.getNumeroDoEpisodio(),
-            podcast.getDuracao(),
-            podcast.getUrlDoRepositorio()
-        });
-    }
+       TelaListagem telaListagem = new TelaListagem(usuarioLogado);
+        telaListagem.setLocationRelativeTo(this); // Centraliza em relação à tela atual
+        telaListagem.setVisible(true);
+        this.dispose(); 
     }//GEN-LAST:event_txtFiltrarListagemActionPerformed
-
+/**
+     * Navega de volta para a tela de cadastro de podcasts.
+     * 
+     * Mantém a sessão do usuário logado ao reabrir a tela de cadastro.
+     * 
+     * @param evt Evento de clique no botão "Cadastrar".
+     */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        btnCadastrar.addActionListener(e -> {
-        new TelaDeCadastroDePodcast().setVisible(true);
+        new TelaDeCadastroDePodcast(usuarioLogado).setVisible(true); 
         this.dispose();
-});
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    
+       /**
+     * Carrega todos os podcasts do banco de dados para a tabela.
+     * 
+     * Atualiza a tabela com os dados mais recentes do sistema.
+     * 
+     * @throws DatabaseException Se ocorrer um erro ao acessar o banco de dados.
+     */
     private void carregarPodcasts() {
-    PodcastController controller = new PodcastController();
-    List<Podcast> podcasts = controller.listarPodcasts();
+    try {
+            PodcastController controller = new PodcastController();
+            List<Podcast> podcasts = controller.listarPodcasts();
 
-    // Obtém o modelo da tabela
-    DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
-    model.setRowCount(0); // Limpa a tabela antes de adicionar novos dados
+            DefaultTableModel model = (DefaultTableModel) tblListagem.getModel();
+            model.setRowCount(0); 
 
-    // Preenche a tabela com os dados dos podcasts
-    for (Podcast podcast : podcasts) {
-        model.addRow(new Object[]{
-            podcast.getId(),
-            podcast.getProdutor(),
-            podcast.getNomeDoEpisodio(),
-            podcast.getNumeroDoEpisodio(),
-            podcast.getDuracao(),
-            podcast.getUrlDoRepositorio()
-        });
-    }
+            for (Podcast podcast : podcasts) {
+                model.addRow(new Object[]{
+                    podcast.getId(),
+                    podcast.getProdutor(),
+                    podcast.getNomeDoEpisodio(),
+                    podcast.getNumeroDoEpisodio(),
+                    podcast.getDuracao(),
+                    podcast.getUrlDoRepositorio()
+                });
+            }
+        } catch (Exception e) {
+            // Trate erros de carregamento (ex: log, mensagem ao usuário)
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(
+                this, 
+                "Erro ao carregar podcasts!", 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE
+            );
+        }
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

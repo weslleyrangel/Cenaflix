@@ -10,19 +10,30 @@ import com.uc10e3.model.Usuario;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author wesll
+ * Interface gráfica para cadastro de podcasts na aplicação CENAFLIX.
+ * Permite o cadastro de novos podcasts com informações como produtor, nome do episódio,
+ * número do episódio, duração e URL do repositório. A interface também oferece a funcionalidade
+ * de acessar a listagem de podcasts cadastrados.
+ * 
+ * @author Wesll
+ * @version 1.2
+ * @since 2023-10-01
  */
 public class TelaDeCadastroDePodcast extends javax.swing.JFrame {
+    /** DAO para operações com podcasts. */
     private PodcastDAO podcastDAO = new PodcastDAO();
     private Usuario usuarioLogado;
     /**
-     * Creates new form TelaDeCadastroDePodcast
+     * Construtor padrão (usuário não logado).
      */
     public TelaDeCadastroDePodcast() {
         initComponents();
     }
-
+    
+    /**
+     * Construtor para usuários logados.
+     * @param usuario Usuário autenticado no sistema.
+     */
     public TelaDeCadastroDePodcast(Usuario usuario) {
            initComponents();
            this.usuarioLogado = usuario;
@@ -199,7 +210,12 @@ public class TelaDeCadastroDePodcast extends javax.swing.JFrame {
     private void txtProdutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdutorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtProdutorActionPerformed
-
+     /**
+     * Valida e persiste os dados do podcast no banco de dados.
+     * Realiza validações de campos obrigatórios e formatação numérica antes de salvar.
+     * 
+     * @param evt Evento de clique no botão "Cadastrar".
+     */
     private void btnCadastrarPodcastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPodcastActionPerformed
             try {
         // Validações
@@ -242,7 +258,12 @@ public class TelaDeCadastroDePodcast extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar podcast: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCadastrarPodcastActionPerformed
-
+ /**
+     * Navega para a tela de listagem de podcasts.
+     * Fecha a tela atual e abre a interface de listagem.
+     * 
+     * @param evt Evento de clique no botão "Ver Listagem".
+     */
     private void btnVerListagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerListagemActionPerformed
         TelaListagem telaListagem = new TelaListagem(usuarioLogado);
         telaListagem.setVisible(true);
