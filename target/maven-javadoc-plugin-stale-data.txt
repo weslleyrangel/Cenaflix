@@ -27,9 +27,9 @@
 -version
 -windowtitle
 'CENAFLIX 1.0-SNAPSHOT API'
+com.uc10e3
 com.uc10e3.controller
 com.uc10e3.dao
-com.uc10e3
 com.uc10e3.model
 com.uc10e3.util
 com.uc10e3.view
@@ -48,18 +48,18 @@ C:\Users\wesll\.m2\repository\org\openjfx\javafx-swing\21\javafx-swing-21.jar = 
 C:\Users\wesll\.m2\repository\org\openjfx\javafx-swing\21\javafx-swing-21-win.jar = 1742063335771
 C:\Users\wesll\Downloads\cenaflix\src\main\java\cenaflixpodcast.sql = 1742009901801
 C:\Users\wesll\Downloads\cenaflix\src\main\java = 1742059914024
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allclasses-index.html = 1742065516069
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allpackages-index.html = 1742065516073
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\element-list = 1742065515375
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\help-doc.html = 1742065516176
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index-all.html = 1742065516122
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index.html = 1742065516029
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\member-search-index.js = 1742065516081
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\module-search-index.js = 1742065516076
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-summary.html = 1742065516129
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-tree.html = 1742065516019
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\package-search-index.js = 1742065516078
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\search.html = 1742065516126
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\serialized-form.html = 1742065515766
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\tag-search-index.js = 1742065516098
-C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\type-search-index.js = 1742065516079
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allclasses-index.html = 1742067754971
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\allpackages-index.html = 1742067754980
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\element-list = 1742067754298
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\help-doc.html = 1742067755101
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index-all.html = 1742067755088
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\index.html = 1742067754934
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\member-search-index.js = 1742067755027
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\module-search-index.js = 1742067755021
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-summary.html = 1742067755095
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\overview-tree.html = 1742067754922
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\package-search-index.js = 1742067755023
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\search.html = 1742067755092
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\serialized-form.html = 1742067754660
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\tag-search-index.js = 1742067755029
+C:\Users\wesll\Downloads\cenaflix\target\reports\apidocs\type-search-index.js = 1742067755025

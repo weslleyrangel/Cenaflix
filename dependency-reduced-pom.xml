@@ -20,7 +20,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.uc10e3.Main</mainClass>
+                  <mainClass>com.uc10e3.Cenaflix</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -43,7 +43,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>com.uc10e3.Main</mainClass>
+          <mainClass>com.uc10e3.Cenaflix</mainClass>
         </configuration>
       </plugin>
       <plugin>
